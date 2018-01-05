@@ -7,12 +7,14 @@ content: "cupSize: ${cupSize}, age: ${age}"
 girl:
     age: 18
     cupSize: B
+    number: ${random.int}
 
 # 随机int
 com:
     gdufs:
         girl:
-            number: ${random.int}
+          number: ${random.int}
+
         blog:
             name: learning
             title: hello springboot

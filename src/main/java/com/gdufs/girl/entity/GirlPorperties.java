@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class GirlPorperties {
     private String cupSize;
     private Integer age;
+    private Integer number;
 
     public String getCupSize() {
         return cupSize;
@@ -27,5 +28,13 @@ public class GirlPorperties {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }

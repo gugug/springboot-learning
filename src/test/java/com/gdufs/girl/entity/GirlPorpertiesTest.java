@@ -17,5 +17,6 @@ public class GirlPorpertiesTest {
     public void getGirlProperties() throws Exception {
         Assert.assertEquals(girlPorperties.getAge().toString(), "18");
         Assert.assertEquals(girlPorperties.getCupSize(), "B");
+        System.out.println("random测试： "+girlPorperties.getNumber());
     }
 }
