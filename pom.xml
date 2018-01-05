@@ -13,8 +13,8 @@
 
 	<packaging>pom</packaging>
 
-	<name>girl</name>
-	<description>Demo project for Spring Boot</description>
+	<name>springboot</name>
+	<description>for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
