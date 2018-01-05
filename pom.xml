@@ -6,7 +6,12 @@
 	<groupId>com.gdufs</groupId>
 	<artifactId>girl</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>springboot-properties</module>
+		<module>springboot-girl-demo</module>
+	</modules>
+
+	<packaging>pom</packaging>
 
 	<name>girl</name>
 	<description>Demo project for Spring Boot</description>
