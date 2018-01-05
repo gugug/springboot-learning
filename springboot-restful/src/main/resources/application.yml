@@ -16,5 +16,5 @@ spring:
 
 ## Mybatis 配置
 mybatis:
-  typeAliasesPackage: com.gdufs.rest.entity.City
+  typeAliasesPackage: com.gdufs.com.gdufs.rest.entity.City
   mapperLocations: classpath:mapper/*.xml
