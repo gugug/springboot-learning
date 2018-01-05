@@ -5,8 +5,10 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/dbgirl
-    data-username: root
-    data-password: root
+    data-username: test
+    data-password: yygucailiang
+    username: test
+    password: yygucailiang
   jpa:
     hibernate:
       ddl-auto: create
