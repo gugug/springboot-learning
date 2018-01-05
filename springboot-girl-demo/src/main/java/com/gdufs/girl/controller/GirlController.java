@@ -27,8 +27,10 @@ public class GirlController {
     }
 
     @PostMapping("girls")
-    public Girl addGirlList() {
+    public Girl addGirlList(String cupSize, Integer age) {
         Girl girl = new Girl();
+        girl.setAge(age);
+        girl.setCupSize(cupSize);
         return girlRepository.save(girl);
     }
 
