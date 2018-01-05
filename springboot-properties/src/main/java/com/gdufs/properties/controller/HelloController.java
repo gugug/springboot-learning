@@ -1,4 +1,4 @@
-package com.gdufs.web.controller;
+package com.gdufs.properties.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,4 +1,4 @@
-package com.gdufs.property;
+package com.gdufs.properties.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -1,16 +1,16 @@
-import com.gdufs.property.HomeProperties;
+package com.gdufs.properties;
+
+import com.gdufs.properties.property.HomeProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Spring Boot 应用启动类
  * <p>
  */
 @SpringBootApplication
-@ComponentScan(value = {"com.gdufs"})
 public class Application implements CommandLineRunner {
 
     @Autowired
