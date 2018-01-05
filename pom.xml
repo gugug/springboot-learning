@@ -9,6 +9,8 @@
 	<modules>
 		<module>springboot-properties</module>
 		<module>springboot-girl-demo</module>
+		<module>springboot-restful</module>
+		<module>springboot-swagger2</module>
 	</modules>
 
 	<packaging>pom</packaging>

@@ -43,8 +43,7 @@ public class CityRestController {
 
     @ApiOperation(value="更新城市详细信息", notes="根据url的id来指定更新对象，并根据传过来的city信息来更新城市详细信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "城市ID", required = true, dataType = "Long"),
-            @ApiImplicitParam(name = "user", value = "城市详细实体city", required = true, dataType = "User")
+            @ApiImplicitParam(name = "city", value = "城市详细实体city", required = true, dataType = "City")
     })
     @RequestMapping(value = "/api/city", method = RequestMethod.PUT)
     public void modifyCity(@RequestBody City city) {

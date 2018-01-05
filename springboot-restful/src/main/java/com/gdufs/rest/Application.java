@@ -11,7 +11,7 @@ import org.mybatis.spring.annotation.MapperScan;
  * <p>
  */
 @SpringBootApplication
-@MapperScan("com.gdufs.com.gdufs.rest.dao")
+@MapperScan("com.gdufs.rest.dao")
 public class Application {
 
     public static void main(String[] args) {
