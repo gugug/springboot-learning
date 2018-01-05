@@ -1,9 +1,11 @@
 package com.gdufs.rest.service;
 
 import com.gdufs.rest.entity.City;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface CityService {
 
     /**
