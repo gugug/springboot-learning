@@ -11,6 +11,8 @@
 		<module>springboot-girl-demo</module>
 		<module>springboot-restful</module>
 		<module>springboot-swagger2</module>
+        <module>springboot-freemarker</module>
+		<module>springboot-jpa</module>
 	</modules>
 
 	<packaging>pom</packaging>
@@ -48,6 +50,7 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!--jpa依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
