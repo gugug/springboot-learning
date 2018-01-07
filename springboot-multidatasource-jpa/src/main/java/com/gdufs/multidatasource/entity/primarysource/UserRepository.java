@@ -1,4 +1,4 @@
-package com.gdufs.multidatasource.entity;
+package com.gdufs.multidatasource.entity.primarysource;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

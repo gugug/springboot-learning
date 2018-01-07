@@ -1,4 +1,4 @@
-package com.gdufs.multidatasource.entity;
+package com.gdufs.multidatasource.entity.primarysource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
