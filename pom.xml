@@ -15,7 +15,7 @@
 		<module>springboot-jpa</module>
 		<module>springboot-multidatasource</module>
 		<module>springboot-multidatasource-jpa</module>
-		<module>springboot-mybatis-xml</module>
+		<module>springboot-mybatis</module>
 	</modules>
 
 	<packaging>pom</packaging>
