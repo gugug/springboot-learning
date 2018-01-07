@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 测试mybatis的注解和xml的两种方式
  */
 @RestController
 public class CityRestController {
