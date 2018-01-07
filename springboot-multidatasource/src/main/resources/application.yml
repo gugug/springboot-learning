@@ -1,0 +1,19 @@
+
+spring:
+    profiles:
+        active: dev
+    datasource:
+        primary:
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://127.0.0.1:3306/dbgirl
+            data-username: test
+            data-password: yygucailiang
+            username: test
+            password: yygucailiang
+        secondary:
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://127.0.0.1:3306/student
+            data-username: test
+            data-password: yygucailiang
+            username: test
+            password: yygucailiang
