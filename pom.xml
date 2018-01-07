@@ -16,6 +16,8 @@
 		<module>springboot-multidatasource</module>
 		<module>springboot-multidatasource-jpa</module>
 		<module>springboot-mybatis</module>
+		<module>springboot-log4j</module>
+		<module>springboot-aop</module>
 	</modules>
 
 	<packaging>pom</packaging>
@@ -61,6 +63,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.21</version>
 		</dependency>
 	</dependencies>
 

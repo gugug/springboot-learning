@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 城市 Controller 实现 Restful HTTP 服务
+ * 城市 controller 实现 Restful HTTP 服务
  */
 @Controller
 public class CityRestController {
