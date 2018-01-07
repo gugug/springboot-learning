@@ -1,6 +1,6 @@
-package com.gdufs.mybatis.xml.dao;
+package com.gdufs.mybatis.dao;
 
-import com.gdufs.mybatis.xml.entity.City;
+import com.gdufs.mybatis.entity.City;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 

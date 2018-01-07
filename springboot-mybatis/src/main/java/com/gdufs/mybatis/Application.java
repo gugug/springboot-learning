@@ -1,4 +1,4 @@
-package com.gdufs.mybatis.xml;
+package com.gdufs.mybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  */
 @SpringBootApplication
-@MapperScan("com.gdufs.mybatis.xml.dao")
+@MapperScan("com.gdufs.mybatis.dao")
 public class Application {
 
     public static void main(String[] args) {

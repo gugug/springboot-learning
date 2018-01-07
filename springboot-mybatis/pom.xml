@@ -9,7 +9,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>springboot-mybatis-xml</artifactId>
+	<artifactId>springboot-mybatis</artifactId>
 
 	<dependencies>
 		<!-- Spring Boot Mybatis 依赖 -->

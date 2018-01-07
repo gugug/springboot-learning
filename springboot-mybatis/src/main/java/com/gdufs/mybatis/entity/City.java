@@ -1,4 +1,4 @@
-package com.gdufs.mybatis.xml.entity;
+package com.gdufs.mybatis.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
