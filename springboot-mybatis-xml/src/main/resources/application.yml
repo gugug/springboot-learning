@@ -1,0 +1,32 @@
+
+spring:
+    profiles:
+        active: dev
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/dbgirl
+        data-username: test
+        data-password: yygucailiang
+        username: test
+        password: yygucailiang
+    jpa:
+        hibernate:
+            ddl-auto: validate #validate会验证创建表 不会drop原来的表 create就会
+        show-sql: true
+
+#mybatis配置
+mybatis:
+    #mybatis.typeAliasesPackage 配置 指向实体类包路径。
+    #mybatis.mapperLocations 配置为 classpath 路径下 mapper 包下，* 代表会扫描所有 xml 文件。
+    type-aliases-package: com.gdufs.mybatis.xml.entity
+    mapper-locations: classpath:mapper/*.xml
+
+
+############################
+#    mybatis.config = mybatis 配置文件名称
+#    mybatis.mapperLocations = mapper xml 文件地址
+#    mybatis.typeAliasesPackage = 实体类包路径
+#    mybatis.typeHandlersPackage = type handlers 处理器包路径
+#    mybatis.check-config-location = 检查 mybatis 配置是否存在，一般命名为 mybatis-config.xml
+#    mybatis.executorType = 执行模式。默认是 SIMPLE
+############################
