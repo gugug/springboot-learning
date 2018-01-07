@@ -13,6 +13,9 @@
 		<module>springboot-swagger2</module>
         <module>springboot-freemarker</module>
 		<module>springboot-jpa</module>
+		<module>springboot-multidatasource</module>
+		<module>springboot-multidatasource-jpa</module>
+		<module>springboot-mybatis-xml</module>
 	</modules>
 
 	<packaging>pom</packaging>
