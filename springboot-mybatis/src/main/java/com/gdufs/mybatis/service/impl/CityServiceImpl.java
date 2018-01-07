@@ -1,8 +1,8 @@
-package com.gdufs.mybatis.xml.service.impl;
+package com.gdufs.mybatis.service.impl;
 
-import com.gdufs.mybatis.xml.dao.CityDao;
-import com.gdufs.mybatis.xml.entity.City;
-import com.gdufs.mybatis.xml.service.CityService;
+import com.gdufs.mybatis.entity.City;
+import com.gdufs.mybatis.service.CityService;
+import com.gdufs.mybatis.dao.CityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +12,30 @@ import java.util.List;
 public class CityServiceImpl implements CityService {
 
     @Autowired
-    private CityDao cityDao;
+    private CityMapper cityMapper;
 
+    @Override
     public List<City> findAllCity() {
-        return cityDao.findAllCity();
+        return null;
     }
 
+    @Override
     public City findCityById(Long id) {
-        return cityDao.findById(id);
+        return cityMapper.findCityById(id);
     }
 
     @Override
     public Long saveCity(City city) {
-        return cityDao.saveCity(city);
+        return null;
     }
 
     @Override
     public Long updateCity(City city) {
-        return cityDao.updateCity(city);
+        return null;
     }
 
     @Override
     public Long deleteCity(Long id) {
-        return cityDao.deleteCity(id);
+        return null;
     }
-
 }

@@ -1,6 +1,6 @@
-package com.gdufs.mybatis.xml.service;
+package com.gdufs.mybatis.service;
 
-import com.gdufs.mybatis.xml.entity.City;
+import com.gdufs.mybatis.entity.City;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
