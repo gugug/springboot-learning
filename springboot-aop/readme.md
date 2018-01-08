@@ -23,3 +23,6 @@ In case if you are using spring security which is by default ON for actuator end
 management:
    security:
       enabled: false 
+      
+
+[Spring Boot Actuator 监控端点小结](http://www.spring4all.com/article/259)
