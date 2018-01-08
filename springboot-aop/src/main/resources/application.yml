@@ -9,3 +9,10 @@ spring:
     data-password: yygucailiang
     username: test
     password: yygucailiang
+
+management:
+    security:
+      enabled: false
+    health:
+      diskspace:
+        enabled: true
