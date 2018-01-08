@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
+ * http://localhost:8081/swagger-ui.html
+ * 访问url进入swagger2页面
  * Spring Boot 应用启动类
  * <p>
  */
