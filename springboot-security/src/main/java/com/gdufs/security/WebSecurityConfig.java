@@ -44,6 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 //在内存中创建了一个用户，该用户的名称为user，密码为password，用户角色为USER
-                .withUser("username").password("password").roles("USER");
+                .withUser("username").password("password").roles("USER")
+                .and()
+                .withUser("admin").password("admin").roles("USER","ADMIN");
     }
 }
