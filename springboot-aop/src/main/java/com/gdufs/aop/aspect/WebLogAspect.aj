@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -15,12 +16,15 @@ import java.util.Arrays;
 
 /**
  * Created by gu on 2018/1/7.
+ * idea的默认配置不成功。可能是以下原因：
+ * aspect这种写法是idea的增强插件，参加下面的链接。要用的是spring的切面，改为class就好了。
+ * https://www.jetbrains.com/help/idea/aspectj.html
  */
 @Aspect
 @Component
-public class WebLogAspect {
+public class  WebLogAspect {
     private Logger logger = Logger.getLogger(getClass());
-    ThreadLocal<Long> startTime = new ThreadLocal<>();
+    ThreadLocal<Long> startTime = new ThreadLocal<Long>();
 
     //    通过@Pointcut定义的切入点为comgdufs.aop.controller包及其子包中所有类中的所有方法，返回类型任意，方法参数任意
     @Pointcut("execution(* com.gdufs.aop.controller..*.*(..))")
