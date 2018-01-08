@@ -11,22 +11,22 @@ spring:
         password: yygucailiang
     jpa:
         hibernate:
-            ddl-auto: validate #validate»áÑéÖ¤´´½¨±í ²»»ádropÔ­À´µÄ±í create¾Í»á
+            ddl-auto: validate #validateä¼šéªŒè¯åˆ›å»ºè¡¨ ä¸ä¼šdropåŸæ¥çš„è¡¨ createå°±ä¼š
         show-sql: true
 
-#mybatisÅäÖÃ
+#mybatisé…ç½®
 mybatis:
-    #mybatis.typeAliasesPackage ÅäÖÃ Ö¸ÏòÊµÌåÀà°üÂ·¾¶¡£
-    #mybatis.mapperLocations ÅäÖÃÎª classpath Â·¾¶ÏÂ mapper °üÏÂ£¬* ´ú±í»áÉ¨ÃèËùÓĞ xml ÎÄ¼ş¡£
+    #mybatis.typeAliasesPackage é…ç½® æŒ‡å‘å®ä½“ç±»åŒ…è·¯å¾„ã€‚
+    #mybatis.mapperLocations é…ç½®ä¸º classpath è·¯å¾„ä¸‹ mapper åŒ…ä¸‹ï¼Œ* ä»£è¡¨ä¼šæ‰«ææ‰€æœ‰ xml æ–‡ä»¶ã€‚
     type-aliases-package: com.gdufs.mybatis.xml.entity
     mapper-locations: classpath:mapper/*.xml
 
 
 ############################
-#    mybatis.config = mybatis ÅäÖÃÎÄ¼şÃû³Æ
-#    mybatis.mapperLocations = mapper xml ÎÄ¼şµØÖ·
-#    mybatis.typeAliasesPackage = ÊµÌåÀà°üÂ·¾¶
-#    mybatis.typeHandlersPackage = type handlers ´¦ÀíÆ÷°üÂ·¾¶
-#    mybatis.check-config-location = ¼ì²é mybatis ÅäÖÃÊÇ·ñ´æÔÚ£¬Ò»°ãÃüÃûÎª mybatis-config.xml
-#    mybatis.executorType = Ö´ĞĞÄ£Ê½¡£Ä¬ÈÏÊÇ SIMPLE
+#    mybatis.config = mybatis é…ç½®æ–‡ä»¶åç§°
+#    mybatis.mapperLocations = mapper xml æ–‡ä»¶åœ°å€
+#    mybatis.typeAliasesPackage = å®ä½“ç±»åŒ…è·¯å¾„
+#    mybatis.typeHandlersPackage = type handlers å¤„ç†å™¨åŒ…è·¯å¾„
+#    mybatis.check-config-location = æ£€æŸ¥ mybatis é…ç½®æ˜¯å¦å­˜åœ¨ï¼Œä¸€èˆ¬å‘½åä¸º mybatis-config.xml
+#    mybatis.executorType = æ‰§è¡Œæ¨¡å¼ã€‚é»˜è®¤æ˜¯ SIMPLE
 ############################
