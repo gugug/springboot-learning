@@ -18,6 +18,7 @@
 		<module>springboot-mybatis</module>
 		<module>springboot-log4j</module>
 		<module>springboot-aop</module>
+		<module>springboot-security</module>
 	</modules>
 
 	<packaging>pom</packaging>
