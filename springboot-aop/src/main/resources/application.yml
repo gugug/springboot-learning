@@ -13,6 +13,4 @@ spring:
 management:
     security:
       enabled: false
-    health:
-      diskspace:
-        enabled: true
+

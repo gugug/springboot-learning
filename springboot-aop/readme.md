@@ -10,3 +10,16 @@
   * spring.aop.proxy-target-class=false # Whether subclass-based (CGLIB) proxies are to be created (true) as
   * opposed to standard Java interface-based proxies (false).
   * 而当我们需要使用CGLIB来实现AOP的时候，需要配置spring.aop.proxy-target-class=true，不然默认使用的是标准Java的实现。
+  
+  
+# 监控端点
+
+Spring Boot Actuator Cannot Show diskSpace Information
+because only ADMINs are authorized to see any more info than this
+
+所以需要把web security set false
+In case if you are using spring security which is by default ON for actuator endpoints, you can disable it in your yml file -
+
+management:
+   security:
+      enabled: false 
