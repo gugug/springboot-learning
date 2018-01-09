@@ -19,6 +19,7 @@
 		<module>springboot-log4j</module>
 		<module>springboot-aop</module>
 		<module>springboot-security</module>
+		<module>springboot-redis</module>
 	</modules>
 
 	<packaging>pom</packaging>
