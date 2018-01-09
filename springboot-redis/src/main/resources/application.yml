@@ -1,0 +1,15 @@
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    data-username: test
+    data-password: yygucailiang
+    username: test
+    password: yygucailiang
+  jpa:
+    hibernate:
+      ddl-auto: validate #validate会验证创建表 不会drop原来的表 create就会
+    show-sql: true
