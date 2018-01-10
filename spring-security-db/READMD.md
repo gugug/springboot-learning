@@ -18,3 +18,5 @@ LEGACYHTML5 需要搭配第三方库 nekohtml 才可以使用。
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+#自定义的 Filter 加入到 Spring Security 中的 Filter 链中的指定位置
+HttpSecurity.addFilterBefore(new DiyFilter(), UsernamePasswordAuthenticationFilter.class);
