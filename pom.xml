@@ -21,6 +21,7 @@
 		<module>springboot-security</module>
 		<module>springboot-redis</module>
 		<module>springboot-mybatis-redis</module>
+		<module>spring-security-db</module>
 	</modules>
 
 	<packaging>pom</packaging>
