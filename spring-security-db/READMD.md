@@ -20,3 +20,7 @@ LEGACYHTML5 需要搭配第三方库 nekohtml 才可以使用。
     }
 #自定义的 Filter 加入到 Spring Security 中的 Filter 链中的指定位置
 HttpSecurity.addFilterBefore(new DiyFilter(), UsernamePasswordAuthenticationFilter.class);
+
+# qq-oauth 授权码方式
+TOKEN_ACCESS_API --> openIdUri -->
+QQAuthenticationManager 通过传来的 token 和 openID 去请求腾讯的getUserInfo接口，获取腾讯用户的信息，并生成新的 Authtication 对象

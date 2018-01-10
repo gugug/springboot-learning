@@ -3,6 +3,8 @@ package com.gdufs.securitydb;
 import com.gdufs.securitydb.filter.AfterCsrfFilter;
 import com.gdufs.securitydb.filter.AtX509AuthenticationFilter;
 import com.gdufs.securitydb.filter.BeforeLoginFilter;
+import com.gdufs.securitydb.filter.qq.QQAuthenticationFilter;
+import com.gdufs.securitydb.filter.qq.QQAuthenticationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.preauth.x509.X509AuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -41,9 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/qquser/**").hasRole("USER")
                 .antMatchers("/user/**").hasRole("USER")
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
+                .formLogin().loginPage("/login").defaultSuccessUrl("/qquser")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
         // 在 UsernamePasswordAuthenticationFilter 前添加 BeforeLoginFilter
@@ -54,7 +58,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         //after
         http.addFilterAfter(new AfterCsrfFilter(), CsrfFilter.class);
+        // 在 UsernamePasswordAuthenticationFilter 前添加 QQAuthenticationFilter
+        http.addFilterAt(qqAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
+    /**
+     * 自定义 QQ登录 过滤器
+     */
+    private QQAuthenticationFilter qqAuthenticationFilter(){
+        QQAuthenticationFilter authenticationFilter = new QQAuthenticationFilter("/login/qq");
+        SimpleUrlAuthenticationSuccessHandler successHandler = new SimpleUrlAuthenticationSuccessHandler();
+        successHandler.setAlwaysUseDefaultTargetUrl(true);
+        successHandler.setDefaultTargetUrl("/qquser");
+        authenticationFilter.setAuthenticationManager(new QQAuthenticationManager());
+        authenticationFilter.setAuthenticationSuccessHandler(successHandler);
+        return authenticationFilter;
+    }
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
