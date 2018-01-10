@@ -1,5 +1,8 @@
 package com.gdufs.securitydb;
 
+import com.gdufs.securitydb.filter.AfterCsrfFilter;
+import com.gdufs.securitydb.filter.AtX509AuthenticationFilter;
+import com.gdufs.securitydb.filter.BeforeLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.preauth.x509.X509AuthenticationFilter;
+import org.springframework.security.web.csrf.CsrfFilter;
 
 /**
  * * 通过@EnableWebSecurity注解开启Spring Security的功能
@@ -40,6 +46,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login").defaultSuccessUrl("/user")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+        // 在 UsernamePasswordAuthenticationFilter 前添加 BeforeLoginFilter
+        http.addFilterBefore(new BeforeLoginFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        //at
+        http.addFilterAt(new AtX509AuthenticationFilter(), X509AuthenticationFilter.class);
+
+        //after
+        http.addFilterAfter(new AfterCsrfFilter(), CsrfFilter.class);
     }
 
     @Autowired
