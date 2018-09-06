@@ -1,6 +1,6 @@
 package com.gdufs.redis;
 
-import com.gdufs.redis.entity.User;
+import com.gdufs.redis.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +37,7 @@ public class ApplicationTest {
         user = new User("蝙蝠侠", 30);
         userRedisTemplate.opsForValue().set(user.getUsername(), user);
 
-        user = new User("11111", 40);
+        user = new User("蜘蛛侠", 40);
         userRedisTemplate.opsForValue().set(user.getUsername(), user);
 
         Assert.assertEquals(20, userRedisTemplate.opsForValue().get("超人").getAge().longValue());
