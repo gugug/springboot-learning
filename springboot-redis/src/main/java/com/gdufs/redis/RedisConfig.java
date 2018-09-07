@@ -16,17 +16,23 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
  * Created by gucailiang on 2018/1/9.
  */
 @Configuration
 @EnableCaching
+@EnableRedisHttpSession
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        return new JedisConnectionFactory();
+
+        JedisConnectionFactory connectionFactory = new JedisConnectionFactory();
+        connectionFactory.setPort(6379);
+        connectionFactory.setHostName("localhost");
+        return connectionFactory;
     }
 
     @Bean(value = "redisTemplate")
