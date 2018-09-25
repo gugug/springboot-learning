@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 /**
  *
@@ -40,11 +41,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
     }
 
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                //在内存中创建了一个用户，该用户的名称为user，密码为password，用户角色为USER
+//                .withUser("username").password("password").roles("USER")
+//                .and()
+//                .withUser("admin").password("admin").roles("USER","ADMIN");
+//    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        基于数据库表进行认证
+//        auth.jdbcAuthentication().dataSource().usersByUsernameQuery().authoritiesByUsernameQuery().groupAuthoritiesByUsername().
+//                passwordEncoder(new StandardPasswordEncoder("5r43ct4C"));//基于数据库表进行认证
+
+
+//        使用基于内存的用户存储
         auth.inMemoryAuthentication()
                 //在内存中创建了一个用户，该用户的名称为user，密码为password，用户角色为USER
-                .withUser("username").password("password").roles("USER")
+                .withUser("username").password("password").roles("USER")// roles()是.authorities方法的缩写，只是加了前缀("ROLE_USER")
                 .and()
                 .withUser("admin").password("admin").roles("USER","ADMIN");
     }
