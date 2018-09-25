@@ -27,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+//                .csrf().disable()//禁用Spring Security的CSRF防护功能
                 //定义哪些URL需要被保护、哪些不需要被保护
                 .authorizeRequests()
                     .antMatchers("/", "/home").permitAll()
@@ -37,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .permitAll()
                     .and()
+                .rememberMe()
+                    .tokenValiditySeconds(2419200).key("spittrKey").and()
                 .logout()
                     .permitAll();
     }
