@@ -9,15 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 /**
- *
- * * 通过@EnableWebSecurity注解开启Spring Security的功能
- * 继承WebSecurityConfigurerAdapter，并重写它的方法来设置一些web安全的细节
+ * Web安全的配置类
+ * <p>
+ * * 通过@EnableWebSecurity注解开启Spring Security的功能继承WebSecurityConfigurerAdapter，并重写它的方法来设置一些web安全的细节
  * configure(HttpSecurity http)方法
- *      通过authorizeRequests()定义哪些URL需要被保护、哪些不需要被保护。例如以上代码指定了/和/home不需要任何认证就可以访问，其他的路径都必须通过身份验证。
- *      通过formLogin()定义当需要用户登录时候，转到的登录页面。
+ * 通过authorizeRequests()定义哪些URL需要被保护、哪些不需要被保护。例如以上代码指定了/和/home不需要任何认证就可以访问，其他的路径都必须通过身份验证。
+ * 通过formLogin()定义当需要用户登录时候，转到的登录页面。
  * configureGlobal(AuthenticationManagerBuilder auth)方法，在内存中创建了一个用户，该用户的名称为user，密码为password，用户角色为USER。
-
- *
+ * <p>
+ * <p>
  * Created by gucailiang on 2018/1/8.
  */
 @Configuration
@@ -30,18 +30,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .csrf().disable()//禁用Spring Security的CSRF防护功能
                 //定义哪些URL需要被保护、哪些不需要被保护
                 .authorizeRequests()
-                    .antMatchers("/", "/home").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/", "/home").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 //定义当需要用户登录时候，转到的登录页面
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
+                .loginPage("/login")
+                .permitAll()
+                .and()
                 .rememberMe()
-                    .tokenValiditySeconds(2419200).key("spittrKey").and()
+                .tokenValiditySeconds(2419200).key("spittrKey").and()
                 .logout()
-                    .permitAll();
+                .permitAll();
     }
 
 //    @Override
@@ -65,6 +65,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //在内存中创建了一个用户，该用户的名称为user，密码为password，用户角色为USER
                 .withUser("username").password("password").roles("USER")// roles()是.authorities方法的缩写，只是加了前缀("ROLE_USER")
                 .and()
-                .withUser("admin").password("admin").roles("USER","ADMIN");
+                .withUser("admin").password("admin").roles("USER", "ADMIN");
     }
 }
