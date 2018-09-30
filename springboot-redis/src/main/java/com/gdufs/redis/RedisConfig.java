@@ -59,7 +59,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
-        template.setConnectionFactory(jedisConnectionFactory());
+//        template.setConnectionFactory(jedisConnectionFactory());//构造器已经传入，没必要再次设置
         //序列化值时使用此序列化方法
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(jackson2JsonRedisSerializer);
