@@ -22,9 +22,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * Created by gucailiang on 2018/1/9.
  */
 @Configuration
-@EnableCaching
-@EnableRedisHttpSession
-public class RedisConfig extends CachingConfigurerSupport {
+public class RedisConfig  {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
@@ -46,6 +44,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 定义 StringRedisTemplate ，指定序列化和反序列化的处理类
+     * StringRedisTemplate默认会使用StringRedis-Serializer
      *
      * @param redisConnectionFactory
      * @return
@@ -70,17 +69,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         return template;
     }
 
-    @Bean
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
-        //使用前缀
-        rcm.setUsePrefix(true);
-        //缓存分割符 默认为 ":"
-//        rcm.setCachePrefix(new DefaultRedisCachePrefix(":"));
-        //设置缓存过期时间
-        //rcm.setDefaultExpiration(60);//秒
-        return rcm;
-    }
 
 
 }
