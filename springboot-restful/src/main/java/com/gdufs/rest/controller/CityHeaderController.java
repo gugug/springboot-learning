@@ -26,26 +26,42 @@ public class CityHeaderController {
 
 
     /**
+     * 服务器在响应体中包含了City的表述以及HTTP状态码200（OK），将其返回给客户端
+     *
      * @param city
      * @return
      */
     @RequestMapping(value = "/api/add", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
     Long saveCity(@RequestBody City city) {
         return cityService.saveCity(city);
     }
 
+
     /**
-     * 当创建新资源的时候，将资源的URL放在响应的Location头部信息中，并返回给客户端是一
-     * 种很好的方式。因此，我们需要有一种方式来填充响应头部信息，此时我们的老朋友
-     * ResponseEntity就能提供帮助了。
+     * HTTP 201不仅能够表明请求成功完成，而且还能描述创建了新资源。如果我们希望完整准确地与客户端交流，那么响应是不是应该为201（Created），而不仅仅是200（OK）
+     *
+     * @param city
+     * @return
+     */
+    @RequestMapping(value = "/api1/add", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody
+    Long saveCity1(@RequestBody City city) {
+        return cityService.saveCity(city);
+
+    }
+
+    /**
+     * 当创建新资源的时候，将资源的URL放在响应的Location头部信息中，并返回给客户端是一种很好的方式。
+     * 因此，我们需要有一种方式来填充响应头部信息，此时我们的老朋友ResponseEntity就能提供帮助了。
      * <p>
      * 注意：mapper接口返回值依然是成功插入的记录数，但不同的是主键值已经赋值到领域模型实体的id中了。
      */
     @RequestMapping(value = "/api2/add", method = RequestMethod.POST, consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody ResponseEntity<City> saveCity2(@RequestBody City city) {
+    public @ResponseBody
+    ResponseEntity<City> saveCity2(@RequestBody City city) {
         HttpHeaders httpHeaders = new HttpHeaders();
         Long id = cityService.saveCity(city);
         URI locationUrl = URI.create("localhost:8081/city/api5/" + city.getId());
