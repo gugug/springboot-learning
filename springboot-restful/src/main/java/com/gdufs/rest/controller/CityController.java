@@ -67,7 +67,6 @@ public class CityController {
         return new ResponseEntity<City>(city, HttpStatus.OK);
     }
 
-
     /**
      * 使用异常处理器处理异常
      * 这个版本的spittleById()方法确实干净了很多。除了对返回值进行null检查，它完全关注于成功的场景，也就是能够找到请求的Spittle。同时，在返回类型中，我们能移除掉奇怪的泛型了。
@@ -82,6 +81,22 @@ public class CityController {
             throw new CityNotFoundException(id);
         }
         return new ResponseEntity<City>(city, HttpStatus.OK);
+    }
+
+    /**
+     * 最干净的版本：ResponseEntity已经不需要了，只需要Responbody
+     * 现在我们已经知道spittleById()将会返回Spittle并且HTTP状态码始终会是200（OK），那么就可以不再使用ResponseEntity，而是将其替换为@ResponseBody
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/api5/{id}", method = RequestMethod.GET)
+    public @ResponseBody City findOneCity5(@PathVariable("id") Long id) {
+        City city = cityService.findCityById(id);
+        if (null == city) {
+            throw new CityNotFoundException(id);
+        }
+        return city;
     }
 
     /**
