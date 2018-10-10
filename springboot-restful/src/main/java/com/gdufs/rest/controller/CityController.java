@@ -2,15 +2,13 @@ package com.gdufs.rest.controller;
 
 import com.gdufs.rest.entity.City;
 import com.gdufs.rest.entity.Error;
+import com.gdufs.rest.exception.CityNotFoundException;
 import com.gdufs.rest.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author gucailiang
@@ -55,16 +53,48 @@ public class CityController {
 
     /**
      * 返回响应体包含错误信息
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "/api3/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> findOneCity3(@PathVariable("id") Long id) {
         City city = cityService.findCityById(id);
-        if(null == city){
+        if (null == city) {
             Error error = new Error(4, "city id [" + id + "] not found");
-            return new ResponseEntity<Error>(error,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<City>(city, HttpStatus.OK);
     }
+
+
+    /**
+     * 使用异常处理器处理异常
+     * 这个版本的spittleById()方法确实干净了很多。除了对返回值进行null检查，它完全关注于成功的场景，也就是能够找到请求的Spittle。同时，在返回类型中，我们能移除掉奇怪的泛型了。
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/api4/{id}", method = RequestMethod.GET)
+    public ResponseEntity<City> findOneCity4(@PathVariable("id") Long id) {
+        City city = cityService.findCityById(id);
+        if (null == city) {
+            throw new CityNotFoundException(id);
+        }
+        return new ResponseEntity<City>(city, HttpStatus.OK);
+    }
+
+    /**
+     * 对应CityNotFoundException的错误处理器
+     * <p>
+     *
+     * @ExceptionHandler注解能够用到控制器方法中，用来处理特定的异常。这里，它表明如果在控制器的任意处理方法中抛出CityNotFoundException异常，就会调用cityNotFound()方法来处理异常。 </p>
+     */
+    @ExceptionHandler(CityNotFoundException.class)
+    public ResponseEntity<Error> cityNotFound(CityNotFoundException e) {
+        long cityId = e.getCityId();
+        Error error = new Error(4, "city id [" + cityId + "] not found");
+        return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
+    }
+
 }
