@@ -99,17 +99,33 @@ public class CityController {
         return city;
     }
 
+//    /**
+//     * 对应CityNotFoundException的错误处理器
+//     * <p>
+//     *
+//     * @ExceptionHandler注解能够用到控制器方法中，用来处理特定的异常。这里，它表明如果在控制器的任意处理方法中抛出CityNotFoundException异常，就会调用cityNotFound()方法来处理异常。 </p>
+//     */
+//    @ExceptionHandler(CityNotFoundException.class)
+//    public ResponseEntity<Error> cityNotFound(CityNotFoundException e) {
+//        long cityId = e.getCityId();
+//        Error error = new Error(4, "city id [" + cityId + "] not found");
+//        return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
+//    }
+
     /**
-     * 对应CityNotFoundException的错误处理器
+     * 鉴于错误处理器的方法会始终返回Error，并且HTTP状态码为404（Not Found），那么现在我们可以对spittleNotFound()方法进行类似的清理：
      * <p>
-     *
-     * @ExceptionHandler注解能够用到控制器方法中，用来处理特定的异常。这里，它表明如果在控制器的任意处理方法中抛出CityNotFoundException异常，就会调用cityNotFound()方法来处理异常。 </p>
+     * 因为spittleNotFound()方法始终会返回Error，所以使用ResponseEntity的唯一原
+     * 因就是能够设置状态码。但是通过为spittleNotFound()方法添
+     * 加@ResponseStatus(HttpStatus.NOT_FOUND)注解，我们可以达到相同的效果，而且
+     * 可以不再使用ResponseEntity了。
+     * </p>
      */
     @ExceptionHandler(CityNotFoundException.class)
-    public ResponseEntity<Error> cityNotFound(CityNotFoundException e) {
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public @ResponseBody Error cityNotFound2(CityNotFoundException e) {
         long cityId = e.getCityId();
-        Error error = new Error(4, "city id [" + cityId + "] not found");
-        return new ResponseEntity<Error>(error, HttpStatus.NOT_FOUND);
+        return new Error(4, "city id [" + cityId + "] not found");
     }
 
 }
