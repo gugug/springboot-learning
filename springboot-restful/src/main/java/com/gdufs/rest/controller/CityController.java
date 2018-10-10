@@ -1,6 +1,7 @@
 package com.gdufs.rest.controller;
 
 import com.gdufs.rest.entity.City;
+import com.gdufs.rest.entity.Error;
 import com.gdufs.rest.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,10 +47,24 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/api2/{id}", method = RequestMethod.GET)
-    public ResponseEntity<City> findOneCityById(@PathVariable("id") Long id) {
+    public ResponseEntity<City> findOneCity2(@PathVariable("id") Long id) {
         City city = cityService.findCityById(id);
         HttpStatus status = city != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
         return new ResponseEntity<City>(city, status);
     }
 
+    /**
+     * 返回响应体包含错误信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/api3/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findOneCity3(@PathVariable("id") Long id) {
+        City city = cityService.findCityById(id);
+        if(null == city){
+            Error error = new Error(4, "city id [" + id + "] not found");
+            return new ResponseEntity<Error>(error,HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<City>(city, HttpStatus.OK);
+    }
 }
