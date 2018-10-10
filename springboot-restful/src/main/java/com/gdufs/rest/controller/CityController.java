@@ -115,10 +115,8 @@ public class CityController {
     /**
      * 鉴于错误处理器的方法会始终返回Error，并且HTTP状态码为404（Not Found），那么现在我们可以对spittleNotFound()方法进行类似的清理：
      * <p>
-     * 因为spittleNotFound()方法始终会返回Error，所以使用ResponseEntity的唯一原
-     * 因就是能够设置状态码。但是通过为spittleNotFound()方法添
-     * 加@ResponseStatus(HttpStatus.NOT_FOUND)注解，我们可以达到相同的效果，而且
-     * 可以不再使用ResponseEntity了。
+     * 因为spittleNotFound()方法始终会返回Error，所以使用ResponseEntity的唯一原因就是能够设置状态码。
+     * 但是通过为spittleNotFound()方法添加@ResponseStatus(HttpStatus.NOT_FOUND)注解，我们可以达到相同的效果，而且可以不再使用ResponseEntity了。
      * </p>
      */
     @ExceptionHandler(CityNotFoundException.class)
