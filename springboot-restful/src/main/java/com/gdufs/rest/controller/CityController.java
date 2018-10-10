@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * 本部分主要演示了发送错误信息给客户端的部分
+ *
  * @author gucailiang
  * @date 2018/10/10
  */
@@ -91,7 +93,8 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/api5/{id}", method = RequestMethod.GET)
-    public @ResponseBody City findOneCity5(@PathVariable("id") Long id) {
+    public @ResponseBody
+    City findOneCity5(@PathVariable("id") Long id) {
         City city = cityService.findCityById(id);
         if (null == city) {
             throw new CityNotFoundException(id);
@@ -121,7 +124,8 @@ public class CityController {
      */
     @ExceptionHandler(CityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public @ResponseBody Error cityNotFound2(CityNotFoundException e) {
+    public @ResponseBody
+    Error cityNotFound2(CityNotFoundException e) {
         long cityId = e.getCityId();
         return new Error(4, "city id [" + cityId + "] not found");
     }
