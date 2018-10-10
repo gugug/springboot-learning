@@ -26,7 +26,7 @@
 		<include refid="Base_Column_List" />
 		from city
 	</select>
-
+	<!--useGeneratedKeys="true" keyProperty="id" 自动生产主键，并把主键绑定在keyProperty对应的属性中，mapper接口返回值依然是成功插入的记录数，但不同的是主键值已经赋值到领域模型实体的id中了-->
 	<insert id="saveCity" parameterMap="City" useGeneratedKeys="true" keyProperty="id">
 		insert into
 			city(id,province_id,city_name,description)
